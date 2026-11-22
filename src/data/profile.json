@@ -1,0 +1,40 @@
+{
+  "name": "Jeevan Kumar Karri",
+  "tagline": "I build AI systems and IoT hardware that solve real problems.",
+  "focus": "2nd-year B.Tech (AI/ML), Presidency University, Bengaluru",
+  "coreStack": ["Python", "C++", "ESP32", "Flutter", "Node.js"],
+  "bio": "I'm a second-year B.Tech student specialising in AI and Machine Learning at Presidency University, Bengaluru. My work spans embedded systems (ESP32, PlatformIO), full-stack development (Flutter, Node.js), and applied AI. I led Team Aaroh at Smart India Hackathon 2026 and enjoy turning ideas into working prototypes that ship.",
+  "email": "jeevankumarkarri2007@gmail.com",
+  "socials": {
+    "github": "https://github.com/jeevan-302007",
+    "linkedin": "https://linkedin.com/in/jeevankumar-karri-96b3b934a",
+    "leetcode": "https://leetcode.com/u/jeevan-0330/"
+  },
+  "hackathons": [
+    {
+      "name": "Smart India Hackathon 2026",
+      "role": "Team Lead — Team Aaroh",
+      "project": "TerraGuard NER",
+      "outcome": "Built a software-only landslide early-warning system for India's North-East covering 7 West Kameng zones."
+    }
+  ],
+  "hardwareBuilds": [
+    {
+      "name": "Ocean Arcade",
+      "description": "Multiplayer game console running entirely on a single ESP32 with captive-portal WebSocket games."
+    },
+    {
+      "name": "DHARA Sensor Network",
+      "description": "ESP32 soil-and-climate sensor array feeding a Node.js data pipeline for precision agriculture."
+    },
+    {
+      "name": "Smart Fan",
+      "description": "IoT fan that adjusts speed to room conditions using live sensor readings on ESP32."
+    }
+  ],
+  "techStack": {
+    "Languages": ["Python", "C++", "TypeScript", "JavaScript", "Dart", "SQL"],
+    "Systems & Embedded": ["ESP32", "PlatformIO", "LittleFS", "mDNS", "WebSockets", "IoT Sensors"],
+    "Frameworks & Tools": ["Flutter", "React", "Node.js", "Vite", "Three.js", "Supabase", "PostgreSQL", "OpenStreetMap"]
+  }
+}

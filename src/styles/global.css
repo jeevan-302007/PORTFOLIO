@@ -1,0 +1,230 @@
+/* ── System CSS Reset & Variables ───────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Tinted Off-White Strict Palette */
+  --bg: #F3F5F9;
+  --surface: #FBFCFE;
+  --border: #E3E7EF;
+  --text: #0B0D14;
+  --muted: #5B6070;
+  --accent: #0A84FF;
+
+  /* 8px Spacing Scale Only */
+  --space-8: 8px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-96: 96px;
+
+  /* Radii */
+  --radius-card: 24px;
+  --radius-pill: 999px;
+  --radius-sm: 12px;
+
+  /* Elevation */
+  --shadow-subtle: 0 2px 14px rgba(11, 13, 20, 0.05);
+  --shadow-hover: 0 8px 28px rgba(11, 13, 20, 0.08);
+
+  /* Fonts */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", monospace;
+
+  /* Transitions */
+  --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+  /* Force light mode */
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--bg);
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100dvh;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* ── Accessible 2px Focus Rings ──────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── Selection ───────────────────────────────────────── */
+::selection {
+  background: rgba(10, 132, 255, 0.18);
+  color: var(--text);
+}
+
+/* ── Container (Safe-area aware) ─────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding-left: max(var(--space-24), env(safe-area-inset-left));
+  padding-right: max(var(--space-24), env(safe-area-inset-right));
+}
+
+/* ── Section Rhythm ──────────────────────────────────── */
+section {
+  padding-top: var(--space-96);
+  padding-bottom: var(--space-96);
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: var(--space-48);
+}
+
+/* ── Interactive Buttons (min 44x44px touch targets) ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  font-size: 1.1875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease),
+    background-color 0.2s var(--ease), border-color 0.2s var(--ease);
+  min-height: 48px;
+  min-width: 48px;
+  text-decoration: none;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #FFFFFF;
+  border: 1px solid var(--accent);
+  box-shadow: 0 2px 10px rgba(10, 132, 255, 0.25);
+}
+
+.btn-primary:hover {
+  background: #0073e6;
+  border-color: #0073e6;
+  box-shadow: 0 4px 16px rgba(10, 132, 255, 0.35);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-subtle);
+}
+
+.btn-secondary:hover {
+  border-color: #ccd3e0;
+  color: var(--text);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ── Badges & Pills ──────────────────────────────────── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-subtle);
+  white-space: nowrap;
+}
+
+.mono-tag {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(11, 13, 20, 0.04);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* ── Scroll Reveal Utility ───────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+  will-change: transform, opacity;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Prefers-reduced-motion ──────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

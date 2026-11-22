@@ -1,0 +1,243 @@
+/* ── Common styling ──────────────────────────────────── */
+.navPill,
+.navBar {
+  position: fixed;
+  z-index: 100;
+  border-radius: var(--radius-pill);
+  background: rgba(251, 252, 254, 0.82);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid var(--border);
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+  will-change: transform, opacity;
+}
+
+/* ── Vertical Pill (Top of page on desktop) ──────────── */
+.navPill {
+  top: var(--space-32);
+  left: var(--space-32);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-16);
+  padding: var(--space-16);
+  border-radius: var(--radius-card);
+}
+
+.pillBrand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  text-decoration: none;
+  color: var(--text);
+  padding: 4px 6px;
+}
+
+.logoBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 0.875rem;
+  letter-spacing: -0.02em;
+}
+
+.brandName {
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--text);
+}
+
+.pillLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.pillVisible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
+}
+
+.pillHidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(0, -12px, 0);
+}
+
+/* ── Horizontal Bar (Scrolled > 80px on desktop) ─────── */
+.navBar {
+  top: var(--space-16);
+  left: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-24);
+  padding: 6px var(--space-24);
+}
+
+.barBrand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  text-decoration: none;
+  color: var(--text);
+}
+
+.barLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.barVisible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(-50%, 0, 0);
+}
+
+.barHidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(-50%, -12px, 0);
+}
+
+/* ── Nav Links ───────────────────────────────────────── */
+.navLink {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  transition: color 0.2s var(--ease), background-color 0.2s var(--ease);
+  white-space: nowrap;
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navLink:hover,
+.navLink:focus-visible {
+  color: var(--text);
+  background: rgba(11, 13, 20, 0.05);
+}
+
+/* ── Mobile Nav Header Button ────────────────────────── */
+.mobileNav {
+  display: none;
+  position: fixed;
+  top: var(--space-16);
+  right: var(--space-24);
+  z-index: 101;
+  background: rgba(251, 252, 254, 0.88);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-pill);
+}
+
+.hamburgerLine {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
+}
+
+.hamburgerLine + .hamburgerLine {
+  margin-top: 5px;
+}
+
+.hamburgerOpen .hamburgerLine:nth-child(1) {
+  transform: rotate(45deg) translate(3.5px, 3.5px);
+}
+
+.hamburgerOpen .hamburgerLine:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerOpen .hamburgerLine:nth-child(3) {
+  transform: rotate(-45deg) translate(3.5px, -3.5px);
+}
+
+/* ── Fullscreen Mobile Overlay Menu ──────────────────── */
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: rgba(243, 245, 249, 0.98);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-32);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease);
+}
+
+.mobileOverlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobileOverlay .navLink {
+  font-size: 1.375rem;
+  font-weight: 600;
+  padding: var(--space-16) var(--space-32);
+}
+
+/* ── Responsive Visibility ───────────────────────────── */
+@media (max-width: 1023px) {
+  .navPill,
+  .navBar {
+    display: none;
+  }
+
+  .mobileNav {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobileNav,
+  .mobileOverlay {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navPill,
+  .navBar,
+  .mobileOverlay {
+    transition: none;
+  }
+}

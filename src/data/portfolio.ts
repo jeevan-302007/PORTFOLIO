@@ -1,0 +1,348 @@
+export interface ProjectLink {
+  demo?: string;
+  repo?: string;
+  other?: {
+    label: string;
+    url: string;
+  };
+}
+
+export interface Collaborator {
+  name: string;
+  url: string;
+}
+
+export interface Project {
+  id: string;
+  title: string;
+  status: "Completed" | "Built" | "In progress";
+  context: string;
+  summary: string;
+  highlights: string[];
+  stack: string[];
+  featured: boolean;
+  collaborator?: Collaborator;
+  links: ProjectLink;
+}
+
+export interface PortfolioData {
+  profile: {
+    name: string;
+    initials: string;
+    headline: string;
+    positioning: string;
+    currentFocus: string;
+    coreStack: string[];
+    statusCard: {
+      statusText: string;
+      heading: string;
+      focusAreas: string[];
+    };
+    email: string;
+    socials: {
+      github: string;
+      linkedin: string;
+    };
+    aboutText: string;
+    photo: {
+      src: string;
+      fallbackInitials: string;
+      alt: string;
+      width: number;
+      height: number;
+    };
+  };
+  navigation: {
+    brand: {
+      logo: string;
+      name: string;
+    };
+    links: {
+      label: string;
+      href: string;
+    }[];
+    resume?: {
+      label: string;
+      href: string;
+      available: boolean;
+    };
+  };
+  projects: Project[];
+  engineeringMilestones: {
+    title: string;
+    roleOrDetail: string;
+    context: string;
+  }[];
+  techStack: {
+    category: string;
+    skills: string[];
+  }[];
+}
+
+export const portfolioData: PortfolioData = {
+  profile: {
+    name: "Jeevan Kumar Karri",
+    initials: "JK",
+    headline: "Jeevan Kumar Karri",
+    positioning: "I build AI systems and IoT hardware that solve real problems.",
+    currentFocus:
+      "Currently building DHARA, a precision agriculture platform, and an ESP32 presence-sensing system.",
+    coreStack: ["Python", "C++", "ESP32", "Flutter", "Node.js"],
+    statusCard: {
+      statusText: "Open to opportunities",
+      heading: "Current Focus",
+      focusAreas: [
+        "DHARA Precision Agriculture Platform",
+        "ESP32 Wi-Fi CSI Presence Sensing",
+        "Edge AI & IoT Hardware Pipelines",
+      ],
+    },
+    email: "jeevankumarkarri2007@gmail.com",
+    socials: {
+      github: "https://github.com/jeevan-302007",
+      linkedin: "https://www.linkedin.com/in/jeevankumar-karri-96b3b934a",
+    },
+    aboutText:
+      "I'm a second-year B.Tech student in Computer Science (AI/ML) at Presidency University, Bengaluru. I build systems that connect AI models to real hardware, from ESP32 sensor networks to a disaster early-warning platform. I led Team Aaroh at Smart India Hackathon 2026 and I'm building DHARA, a precision agriculture platform, with a teammate. I work mostly in Python, C++, and Flutter, and I'm strengthening Java and data structures.",
+    photo: {
+      src: "/images/profile.webp",
+      fallbackInitials: "JK",
+      alt: "Jeevan Kumar Karri",
+      width: 220,
+      height: 220,
+    },
+  },
+  navigation: {
+    brand: {
+      logo: "JK",
+      name: "Jeevan Kumar Karri",
+    },
+    links: [
+      { label: "Projects", href: "#projects" },
+      { label: "Experience", href: "#experience" },
+      { label: "About", href: "#about" },
+    ],
+    resume: {
+      label: "Resume",
+      href: "/resume.pdf",
+      available: false, // only render if resume.pdf exists in /public
+    },
+  },
+  projects: [
+    {
+      id: "terraguard-ner",
+      title: "TerraGuard NER",
+      status: "Completed",
+      context: "Smart India Hackathon 2026 (SIH26001, MDoNER), Team Aaroh, team lead",
+      summary:
+        "A software-only landslide early warning platform for India's North East. It needs no physical sensors and aims to give district authorities and communities earlier warning.",
+      highlights: [
+        "Built a hybrid risk engine: a rule-based rainfall threshold baseline designed to take an ML layer later",
+        "Built a live GIS dashboard across 7 West Kameng zones with rainfall trend charts, a manual rainfall slider, and a rainfall spike simulation",
+        "Built a cross-device emergency buzzer using Supabase Realtime, with a siren and full-screen alert on HIGH-risk transitions",
+      ],
+      stack: [
+        "Flutter",
+        "Dart",
+        "Supabase Realtime",
+        "flutter_map",
+        "OpenStreetMap",
+        "Web Audio API",
+      ],
+      featured: true,
+      links: {},
+    },
+    {
+      id: "ocean-arcade",
+      title: "Ocean Arcade",
+      status: "Built",
+      context: "Independent project",
+      summary:
+        "A self-contained multiplayer game console on one ESP32. Players join its WiFi hotspot and play browser games together, with no internet, app, or server needed.",
+      highlights: [
+        "Built a captive portal that opens the game hub on connect, with real-time play over a WebSocket relay on the ESP32",
+        "Fixed async TCP library conflicts by switching to RPAsyncTCP",
+        "Fixed blank captive portal pages across devices by using absolute URLs; added AP+STA mode with mDNS at oceanarcade.local",
+      ],
+      stack: ["C++", "PlatformIO", "ESP32", "WebSockets", "LittleFS", "mDNS"],
+      featured: false,
+      links: {},
+    },
+    {
+      id: "fitcore",
+      title: "FitCore",
+      status: "Built",
+      context: "Independent project",
+      summary:
+        "A gym management app built to sell white-label to gyms in Guntur district, for a one-time setup fee plus optional monthly maintenance.",
+      highlights: [
+        "Reached a working Android APK after setting up the full build pipeline",
+        "Fixed a GoRouter redirect loop with a refresh notifier and corrected route constants",
+        "Removed hardcoded mock IDs and added the missing INTERNET permission to the Android manifest",
+      ],
+      stack: ["Flutter", "Dart", "Supabase"],
+      featured: false,
+      links: {},
+    },
+    {
+      id: "attendance-tracker",
+      title: "Attendance Tracker",
+      status: "Built",
+      context: "Independent project",
+      summary:
+        "An Android app that tracks attendance per subject and shows how many more classes you need to stay above the limit.",
+      highlights: [
+        "Lets students import a timetable from a photo and import past attendance from XLS sheets",
+        "Warns about low attendance per subject, and handles extra Saturdays and suspended hours in the calendar",
+        "Designed to be fast and lightweight",
+      ],
+      stack: ["Android"],
+      featured: false,
+      links: {},
+    },
+    {
+      id: "dhara",
+      title: "DHARA",
+      status: "In progress",
+      context: "Independent project",
+      summary:
+        "An AI-powered precision agriculture platform for farmers in India. ESP32 sensors feed a backend pipeline that produces farming recommendations in a mobile app.",
+      highlights: [
+        "Expanded the backend from 9 to 17 API endpoints and wired the sensor-to-recommendation pipeline into the API layer, verified with real payloads",
+        "Built the Flutter app flows: phone and OTP auth, farm onboarding, BLE and manual-code device pairing, and an 8-metric dashboard",
+        "Working on the current blocker: writing Wi-Fi and backend credentials to the ESP32 with NVS provisioning",
+      ],
+      stack: ["Flutter", "Node.js", "PostgreSQL", "ESP32", "PlatformIO", "C++"],
+      featured: false,
+      collaborator: {
+        name: "GV Pavani",
+        url: "https://www.linkedin.com/in/venkata-pavani-ginjarampalli-7888613a2/",
+      },
+      links: {},
+    },
+    {
+      id: "marco-ai",
+      title: "MARCO AI",
+      status: "In progress",
+      context: "Independent project",
+      summary:
+        "A personal AI voice assistant and developer workspace with a 3D control panel and a browser-based code editor.",
+      highlights: [
+        "Built the AI brain on Groq's llama-3.3-70b with a local Ollama fallback when offline",
+        "Built a WebSocket server that syncs voice state and transcription with the frontend, plus a Three.js control panel",
+        "Added a code execution engine supporting 25+ languages and integrations for web search, Gmail, Spotify/YouTube, and reminders",
+      ],
+      stack: ["Python", "asyncio", "WebSockets", "Three.js", "Groq", "Ollama"],
+      featured: false,
+      links: {},
+    },
+    {
+      id: "swarmmind",
+      title: "SwarmMind",
+      status: "In progress",
+      context: "Independent project",
+      summary:
+        "A multi-agent platform that analyses ideas through several AI agents and returns structured insight. It is a rebranded fork of the MiroFish frontend, plus a standalone React frontend.",
+      highlights: [
+        "Built a standalone frontend in React, TypeScript, and Vite",
+        "Rebranded the MiroFish Vue 3 frontend: full English translation, a prompt-only input flow, and a new agent detail side panel",
+        "Scoped changes to the frontend only, with no backend or architecture changes, and fixed polling lifecycle issues across four views",
+      ],
+      stack: ["React", "TypeScript", "Vite", "Vue 3", "Flask"],
+      featured: false,
+      links: {},
+    },
+    {
+      id: "signbridge",
+      title: "SignBridge",
+      status: "In progress",
+      context: "Independent project",
+      summary:
+        "A privacy-first, client-side Indian Sign Language phrase assistant. Recognition runs in the browser.",
+      highlights: [
+        "Built a 173-dimension kinematic joint-angle feature system with z-score standardization and per-phrase acceptance thresholds",
+        "Added LB_Keogh pruning for about a 46x speedup in matching, and a sentence accumulation mode",
+        "Designing an air-writing mode with a two-hand gesture interface; tool locking is still unreliable",
+      ],
+      stack: ["MediaPipe", "DTW", "Web Workers", "FastAPI"],
+      featured: false,
+      links: {},
+    },
+    {
+      id: "esp32-csi-presence",
+      title: "ESP32 CSI Presence",
+      status: "In progress",
+      context: "Independent project",
+      summary:
+        "A privacy-preserving presence and movement system on a single ESP32, with no extra sensors. It uses Wi-Fi channel data (CSI) to detect people, movement, and breathing.",
+      highlights: [
+        "Detects movement and breathing from live Wi-Fi CSI data, and tracks nearby devices through probe request and BLE advertisement sniffing",
+        "Hosts a live dashboard on the ESP32 showing the CSI graph and device list, with active devices highlighted",
+        "Restarting the dashboard from scratch; the next version adds a floor-plan map with live human movement",
+      ],
+      stack: ["ESP32", "ESP-IDF", "Wi-Fi CSI", "BLE", "PlatformIO"],
+      featured: false,
+      links: {},
+    },
+    {
+      id: "smart-fan",
+      title: "Smart Fan",
+      status: "In progress",
+      context: "Independent project",
+      summary:
+        "An IoT fan that adjusts its operation based on environmental conditions, using sensor readings and embedded control.",
+      highlights: [
+        "Integrates sensors with an ESP32 to control the fan automatically",
+        "Demonstrates embedded system control driven by environmental data",
+      ],
+      stack: ["ESP32", "IoT sensors"],
+      featured: false,
+      links: {},
+    },
+  ],
+  engineeringMilestones: [
+    {
+      title: "Smart India Hackathon 2026",
+      roleOrDetail: "Team Aaroh, team lead",
+      context: "National hackathon initiative (SIH26001, MDoNER)",
+    },
+    {
+      title: "Ocean Arcade",
+      roleOrDetail: "ESP32 multiplayer game hub",
+      context: "Self-contained captive portal & WebSocket architecture",
+    },
+    {
+      title: "DHARA",
+      roleOrDetail: "ESP32 precision agriculture sensor network",
+      context: "Edge environmental telemetry & recommendation pipeline",
+    },
+    {
+      title: "Smart Fan",
+      roleOrDetail: "IoT environmental automation",
+      context: "Dynamic fan control via embedded micro-sensors",
+    },
+  ],
+  techStack: [
+    {
+      category: "Languages",
+      skills: ["Python", "C++", "Java (learning)", "JavaScript", "Dart"],
+    },
+    {
+      category: "Systems & Hardware",
+      skills: ["ESP32", "ESP-IDF", "PlatformIO", "Wi-Fi CSI", "BLE", "Sensors"],
+    },
+    {
+      category: "Frameworks & Tools",
+      skills: [
+        "Flutter",
+        "Node.js",
+        "PostgreSQL",
+        "Supabase",
+        "Three.js",
+        "Vue 3",
+        "React",
+        "Git",
+      ],
+    },
+  ],
+};

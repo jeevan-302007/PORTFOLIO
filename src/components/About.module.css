@@ -1,0 +1,142 @@
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-32);
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .aboutGrid {
+    grid-template-columns: 65fr 35fr;
+  }
+}
+
+/* ── Right Column: Photo (Appears first on mobile) ──── */
+.photoCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  order: -1;
+}
+
+@media (min-width: 768px) {
+  .photoCol {
+    order: 1;
+    justify-content: flex-end;
+  }
+}
+
+.photoFrame {
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-subtle);
+  background: var(--surface);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-card);
+  display: block;
+}
+
+.fallbackInitials {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #EEF2F8;
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 3rem;
+  letter-spacing: -0.04em;
+  user-select: none;
+}
+
+/* ── Left Column: Bio & Direct Links ─────────────────── */
+.copyCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  order: 1;
+}
+
+@media (min-width: 768px) {
+  .copyCol {
+    order: 0;
+  }
+}
+
+.bioText {
+  font-size: 1.0625rem;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.linksRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.copyEmailBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  padding: 12px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s var(--ease);
+  min-height: 44px;
+}
+
+.copyEmailBtn:hover {
+  border-color: #ccd3e0;
+  box-shadow: var(--shadow-subtle);
+}
+
+.copyEmailBtn.copied {
+  border-color: #34c759;
+  color: #248a3d;
+  background: rgba(52, 199, 89, 0.08);
+}
+
+.socialBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s var(--ease);
+  min-height: 44px;
+}
+
+.socialBtn:hover {
+  border-color: #ccd3e0;
+  color: var(--accent);
+  box-shadow: var(--shadow-subtle);
+}
